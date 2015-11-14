@@ -1,0 +1,39 @@
+﻿<Window x:Class="UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Fiets- en Gereedschapsmagazijn" Height="600" Width="800" >
+    <Grid >
+        <Label Name="lblTitel"  Content="Fietsmagazijn Applicatie" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Wide Latin" FontSize="36" Margin="0,100" />
+
+        <Button Name="userButton" Height="100" Width="150" Margin="10,124,532,145" Click="UsersClick" >
+            <Button.Content>
+                <Image Source="images/user.jpg" Stretch= "Fill" />
+            </Button.Content>
+        </Button>
+
+        <Button Name="bikeButton" Height="100" Width="150" Margin="127,124,315,145"  Click="BikesClick">
+            <Button.Content>
+                <Image Source="images/fiets.png" Stretch= "Fill" />
+            </Button.Content>
+        </Button>
+
+        <Button Name="partButton" Height="100" Width="150" Margin="354,124,188,145" Click="PartsClick" >
+            <Button.Content>
+                <Image Source="images/part.png" Stretch="Fill" />
+            </Button.Content>
+        </Button>
+        
+        <Button Name="toolButton" Height="100" Width="150" Margin="532,124,10,145" Click="ToolsClick">
+            <Button.Content>
+                <Image Source="images/tool.jpg" Stretch="Fill" />
+            </Button.Content>
+        </Button>
+        <Label Name="lblUsers" Content="  Gebruikers" Margin="60,334,582,204" Height="Auto" Width="150" HorizontalAlignment="Center" FontFamily="Wide Latin" />
+        <Label Name="lblBikes" Content="       Fietsen" Margin="227,334,415,204" Height="Auto" Width="150" HorizontalAlignment="Center" FontFamily="Wide Latin" />
+        <Label Name="lblParts" Content="   Onderdelen" Margin="404,334,238,204" Height="Auto" Width="150" HorizontalAlignment="Center" FontFamily="Wide Latin" />
+        <Label Name="lblTools" Content=" Gereedschap" Margin="582,334,60,204" Height="Auto" Width="150" HorizontalAlignment="Center" FontFamily="Wide Latin" />
+
+        <Label Name="lblDesign" Content="Development by clko&#xD;&#xA; Copyright ©2015 "  Height="54" Width="348" HorizontalAlignment="Center" FontFamily="Wide Latin" Margin="60,406,384,109" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        <Label Name="lblVersion" Content=" version 1.0"  Height="54" Width="278" HorizontalAlignment="Center" FontFamily="Wide Latin" Margin="454,406,60,109" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+    </Grid>
+</Window>

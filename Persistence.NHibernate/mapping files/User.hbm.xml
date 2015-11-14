@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"  assembly="Business" default-lazy="false">
+  <class name="BikeWarehouse.Domain.User" table="user" >
+    <id name="Id" >
+      <column name="id" />
+      <generator class="native"></generator>
+    </id>
+    <property name="FirstName" column="firstname" />
+    <property name="Name" column="name" />
+    <property name="BirthDate" column="birthdate" />
+    <property name="Weight" column="weight" />
+     <property name="Height" column="height" />
+    
+  </class>
+</hibernate-mapping>

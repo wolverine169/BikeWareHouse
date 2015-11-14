@@ -1,0 +1,23 @@
+﻿<Window x:Class="UI.WPFControls.UsersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gebruikers" Height="600" Width="800">
+    <Canvas>
+        <Button Name="btnAddUserButton" Height="27" Canvas.Left="26" Canvas.Top="200" Width="76" Click="AddUserButtonClick" >Voeg toe</Button>
+
+    <Button Name="btnCancelUsersButton" Canvas.Left="122" Canvas.Top="203" Width="80" Click="CancelButtonClick" Height="22">Annuleer</Button>
+    <ListView Name="lstUsers" Height="163" Canvas.Left="26" Canvas.Top="19" Width="600" >
+        <ListView.View>
+            <GridView>
+                <GridViewColumn Header="Naam" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                <GridViewColumn Header="Voornaam" Width="100" DisplayMemberBinding="{Binding FirstName}"/>
+                <GridViewColumn Header="Leeftijd" Width="100" DisplayMemberBinding="{Binding getAge}"/>
+                <GridViewColumn Header="Gewicht" Width="100" DisplayMemberBinding="{Binding Address.City}"/>
+                <GridViewColumn Header="Lengte" Width="100" DisplayMemberBinding="{Binding Address.ZipCode}"/>
+                <GridViewColumn Header="#Fietsen" Width="100" DisplayMemberBinding="{Binding Address.State}"/>
+                       </GridView>
+        </ListView.View>
+    </ListView>
+
+    </Canvas>
+</Window>
