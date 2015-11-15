@@ -31,8 +31,7 @@ namespace UI.WPFControls.CustomControl
 
 
         public static readonly DependencyProperty ValueProperty =
-      DependencyProperty.Register("Value", typeof(object),
-        typeof(DateControl), new PropertyMetadata(null));
+      DependencyProperty.Register("Value", typeof(object),typeof(DateControl), new PropertyMetadata(null));
 
      }
 }

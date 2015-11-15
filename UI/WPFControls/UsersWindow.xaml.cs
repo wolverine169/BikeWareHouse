@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BikeWarehouse.Domain;
+using BikeWareHouse.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,14 @@ namespace UI.WPFControls
     /// </summary>
     public partial class UsersWindow : Window
     {
+       
         public UsersWindow()
         {
             InitializeComponent();
+            UserTask ust = new UserTask();
+            List<User> userList = new List<User>();
+            userList = ust.Users();
+            lstUsers.ItemsSource = userList;
         }
 
         private void AddUserButtonClick(object sender, RoutedEventArgs e)

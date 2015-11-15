@@ -53,5 +53,12 @@ namespace BikeWareHouse.Domain.Reusable
             return years;
         }
 
+        public DateTime DateCalculation(Int32 day, Int32 month, Int32 year)
+        {
+
+            DateTime date = new DateTime(day, month, year);
+
+            return date;
+        }
     }
 }

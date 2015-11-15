@@ -6,7 +6,7 @@
              mc:Ignorable="d" Height="61.194" Width="129.85">
     <Canvas Name="cnvDate">
         <ComboBox Name="cmbDate" Canvas.Left="10" Canvas.Top="10" SelectedItem="Date" />
-        <ComboBox Name="cmbMonths" Canvas.Left="57" Canvas.Top="10"  SelectedItem=""/>
-        <ComboBox Name="cmbYear" Canvas.Left="102" Canvas.Top="10"  SelectedItem=""/>
+        <ComboBox Name="cmbMonths" Canvas.Left="57" Canvas.Top="10"  SelectedItem="Month"/>
+        <ComboBox Name="cmbYear" Canvas.Left="102" Canvas.Top="10"  SelectedItem="Year"/>
     </Canvas>
 </UserControl>

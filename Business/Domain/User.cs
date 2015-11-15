@@ -14,10 +14,9 @@ namespace BikeWarehouse.Domain
 
         private String firstName;
         private String name;
-        public String dateOfBirth;
+        public DateTime dateOfBirth;
         public Decimal weight;
         public Decimal height;
-        public Int32 age;
         private List<Bike> bikeList;
 
         // never change this value 2089800123, or the existing user codes will become inconsistent!!
@@ -56,7 +55,7 @@ namespace BikeWarehouse.Domain
             set { height = value; }
         }
 
-        public String BirthDate
+        public DateTime BirthDate
         {
             get { return dateOfBirth; }
             set { dateOfBirth = value; }
@@ -64,14 +63,15 @@ namespace BikeWarehouse.Domain
 
         public Int32 Age
         {
-            get { return age; }
+            get { return CalculateAge(BirthDate); }
             set { value = CalculateAge(BirthDate); }
         }
 
-        private Int32 CalculateAge(String birthDate)
+        private Int32 CalculateAge(DateTime birthDate)
         {
             DateTime now = DateTime.Today;
-            DateTime birthday = Convert.ToDateTime(birthDate);
+            // DateTime birthday = Convert.ToDateTime(birthDate);
+            DateTime birthday = birthDate;
             Int32 age1 = now.Year - birthday.Year;
             if (now.Month < birthday.Month || (now.Month == birthday.Month && now.Day < birthday.Day))//not had bday this year yet
                 age1--;
@@ -106,6 +106,5 @@ namespace BikeWarehouse.Domain
             }
         }
 
-        
-     }
+    }
 }
