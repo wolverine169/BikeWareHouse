@@ -14,6 +14,7 @@ namespace BikeWarehouse.Domain
 
         private String firstName;
         private String name;
+       // public String dateOfBirth;
         public DateTime dateOfBirth;
         public Decimal weight;
         public Decimal height;
@@ -67,15 +68,17 @@ namespace BikeWarehouse.Domain
             set { value = CalculateAge(BirthDate); }
         }
 
-        private Int32 CalculateAge(DateTime birthDate)
+        //private Int32 CalculateAge(String birthDate)
+            private Int32 CalculateAge(DateTime birthDate)
         {
             DateTime now = DateTime.Today;
-            // DateTime birthday = Convert.ToDateTime(birthDate);
+            //DateTime birthday = Convert.ToDateTime(birthDate);
+
             DateTime birthday = birthDate;
-            Int32 age1 = now.Year - birthday.Year;
+            Int32 age = now.Year - birthday.Year;
             if (now.Month < birthday.Month || (now.Month == birthday.Month && now.Day < birthday.Day))//not had bday this year yet
-                age1--;
-            return age1;
+                age--;
+            return age;
         }
 
         public List<Bike> GetBikeList

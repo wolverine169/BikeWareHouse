@@ -74,12 +74,10 @@
     <Compile Include="WPFControls\BikesWindow.xaml.cs">
       <DependentUpon>BikesWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WPFControls\CustomControl\DateControl.xaml.cs">
-      <DependentUpon>DateControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WPFControls\PartsWindow.xaml.cs">
       <DependentUpon>PartsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WPFControls\reusable\CalendarHelper.cs" />
     <Compile Include="WPFControls\ToolsWindow.xaml.cs">
       <DependentUpon>ToolsWindow.xaml</DependentUpon>
     </Compile>
@@ -91,10 +89,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WPFControls\BikesWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WPFControls\CustomControl\DateControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

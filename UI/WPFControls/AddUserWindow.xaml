@@ -3,24 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:BikeWareHouse.Domain;assembly=Business"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
-        xmlns:userControl="clr-namespace:UI.WPFControls.CustomControl"
-            Title="Gebruiker toevoegen" Height="247.761" Width="661.194">
-   
-    <Canvas Name="canvasUser"  DataContext="" Margin="0,0,-8,0">
+        xmlns:ccc="clr-namespace:UI.WPFControls.reusable"
+        Title="Gebruiker toevoegen" Height="256.761" Width="718.194">
+
+    <Canvas Name="canvasUser"  DataContext="" Margin="0,0,47,55">
         <Label Name="lblFirstName" Canvas.Left="15" Canvas.Top="14" >Voornaam</Label>
         <TextBox Name="txtFirstName" Height="23" Canvas.Left="128" TextWrapping="Wrap" Text="{Binding Path= FirstName}" Canvas.Top="17" Width="135" />
         <Label  Name="lblName" Width="59" Canvas.Left="320" Canvas.Top="17" >Naam</Label>
         <TextBox Name="txtName" Height="23" Canvas.Left="396" TextWrapping="Wrap" Text="{Binding Path= Name}" Canvas.Top="17" Width="179" />
-        <Label Name="lblBirthdate" Canvas.Left="15" Canvas.Top="68" Content="Geboortedatum"/>
-        <userControl:DateControl Value="{Binding Path = BirthDate}" Height="40" Canvas.Left="115" Canvas.Top="57" Width="135" />
-        <Label Name="lblWeight" Canvas.Left="280" Canvas.Top="68" Content="Gewicht"/>
-        <TextBox Name="txtWeight" Height="23" Canvas.Left="350" TextWrapping="Wrap" Text="{Binding Path= Weight}" Canvas.Top="68" Width="57"/>
-        <Label Name="lblLength" Canvas.Left="467" Canvas.Top="68" Content="Lengte" />
-        <TextBox Name="txtLength" Height="23" Canvas.Left="518" TextWrapping="Wrap" Text="{Binding Path= Height}" Canvas.Top="68" Width="57"/>
-        <Button Name="btnCancelAddUser" Height="27" Canvas.Left="523" Canvas.Top="155" Width="92" Click="btnCancelAddUser_Click">Annuleer</Button>
-        <Button Name="btnSaveUser" Canvas.Left="407" Canvas.Top="155" Width="75" Click="btnSaveUser_Click" Height="27">Bewaar</Button>
-        <Label Name="lblKg" Canvas.Left="425" Canvas.Top="68" Content="kg" />
-        <Label Name="lblCm" Canvas.Left="580" Canvas.Top="68" Content="cm"  />
+        <Label Name="lblBirthdate" Canvas.Left="15" Canvas.Top="83" Content="Geboortedatum"/>
+        <DatePicker Name="dtpUser" Canvas.Left="128" Canvas.Top="84" SelectedDate="{Binding Path=BirthDate, Mode=TwoWay, BindsDirectlyToSource=True}"  >
+        <DatePicker.CalendarStyle >
+            <Style TargetType="Calendar"
+               BasedOn="{StaticResource {x:Type Calendar}}" >
+                    <Setter Property="ccc:CalendarHelper.DisplayMode" Value="Decade"/>
+            </Style>
+        </DatePicker.CalendarStyle>
+        </DatePicker>
+        <Label Name="lblWeight" Canvas.Left="320" Canvas.Top="81" Content="Gewicht"/>
+        <TextBox Name="txtWeight" Height="23" Canvas.Left="396" TextWrapping="Wrap" Text="{Binding Path= Weight}" Canvas.Top="83" Width="57"/>
+        <Label Name="lblLength" Canvas.Left="516" Canvas.Top="81" Content="Lengte" />
+        <TextBox Name="txtLength" Height="23" Canvas.Left="581" TextWrapping="Wrap" Text="{Binding Path= Height}" Canvas.Top="86" Width="57"/>
+        <Button Name="btnCancelAddUser" Height="27" Canvas.Left="581" Canvas.Top="168" Width="92" Click="btnCancelAddUser_Click">Annuleer</Button>
+        <Button Name="btnSaveUser" Canvas.Left="462" Canvas.Top="168" Width="74" Click="btnSaveUser_Click" Height="26">Bewaar</Button>
+        <Label Name="lblKg" Canvas.Left="476" Canvas.Top="81" Content="kg" />
+        <Label Name="lblCm" Canvas.Left="674" Canvas.Top="83" Content="cm"  />
+
 
     </Canvas>
 

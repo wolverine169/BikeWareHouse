@@ -30,6 +30,9 @@ namespace UI.WPFControls
             this.user = new User();
             this.userTask.User = this.user;
             canvasUser.DataContext = this.userTask.User;
+            dtpUser.DisplayDate = DateTime.Today;
+
+
         }
 
         private void btnSaveUser_Click(object sender, RoutedEventArgs e)
