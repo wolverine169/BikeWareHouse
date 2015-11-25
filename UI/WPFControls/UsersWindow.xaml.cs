@@ -35,7 +35,6 @@ namespace UI.WPFControls
         {
             Window newForm = new AddUserWindow(this);
             newForm.ShowDialog();
-
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs e)

@@ -5,14 +5,62 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:ccc="clr-namespace:UI.WPFControls.reusable"
         Title="Gebruiker toevoegen" Height="256.761" Width="718.194">
-
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,2,40,2" />
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="true">
+                            <Border Background="Red" DockPanel.Dock="right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                </TextBlock>
+                            </Border>
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                <Border BorderBrush="red" BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type DatePicker}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,2,40,2" />
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="true">
+                            <Border Background="Red" DockPanel.Dock="right" Margin="5,0,0,0" Width="20" Height="20" CornerRadius="10"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                </TextBlock>
+                            </Border>
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                <Border BorderBrush="red" BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Canvas Name="canvasUser"  DataContext="" Margin="0,0,47,55">
+        <Canvas.CommandBindings>
+            <CommandBinding Command="New" CanExecute="AddUser_CanExecute" Executed="AddUser_Executed" />
+        </Canvas.CommandBindings>
         <Label Name="lblFirstName" Canvas.Left="15" Canvas.Top="14" >Voornaam</Label>
-        <TextBox Name="txtFirstName" Height="23" Canvas.Left="128" TextWrapping="Wrap" Text="{Binding Path= FirstName}" Canvas.Top="17" Width="135" />
+        <TextBox Name="txtFirstName" Height="23" Canvas.Left="128" TextWrapping="Wrap" Validation.Error="Validation_Error"
+                 Text="{Binding UpdateSourceTrigger=LostFocus, Path=FirstName,
+                        ValidatesOnDataErrors=true, NotifyOnValidationError=true}" Canvas.Top="17" Width="135" />
         <Label  Name="lblName" Width="59" Canvas.Left="320" Canvas.Top="17" >Naam</Label>
-        <TextBox Name="txtName" Height="23" Canvas.Left="396" TextWrapping="Wrap" Text="{Binding Path= Name}" Canvas.Top="17" Width="179" />
+        <TextBox Name="txtName" Height="23" Canvas.Left="396" TextWrapping="Wrap" Validation.Error="Validation_Error"
+                 Text="{Binding UpdateSourceTrigger=LostFocus, Path=Name,
+                        ValidatesOnDataErrors=true, NotifyOnValidationError=true}" Canvas.Top="17" Width="179" />
         <Label Name="lblBirthdate" Canvas.Left="15" Canvas.Top="83" Content="Geboortedatum"/>
-        <DatePicker Name="dtpUser" Canvas.Left="128" Canvas.Top="84" SelectedDate="{Binding Path=BirthDate, Mode=TwoWay, BindsDirectlyToSource=True}"  >
+        <DatePicker Name="dtpUser" Canvas.Left="128" Canvas.Top="84" Validation.Error="Validation_Error" SelectedDate="{Binding Path=BirthDate, Mode=TwoWay, BindsDirectlyToSource=True, ValidatesOnDataErrors=true, NotifyOnValidationError=true}"  >
         <DatePicker.CalendarStyle >
             <Style TargetType="Calendar"
                BasedOn="{StaticResource {x:Type Calendar}}" >
@@ -21,13 +69,17 @@
         </DatePicker.CalendarStyle>
         </DatePicker>
         <Label Name="lblWeight" Canvas.Left="320" Canvas.Top="81" Content="Gewicht"/>
-        <TextBox Name="txtWeight" Height="23" Canvas.Left="396" TextWrapping="Wrap" Text="{Binding Path= Weight}" Canvas.Top="83" Width="57"/>
+        <TextBox Name="txtWeight" Height="23" Canvas.Left="396" TextWrapping="Wrap" Validation.Error="Validation_Error"
+                 Text="{Binding UpdateSourceTrigger=LostFocus, Path=Weight,
+                        ValidatesOnDataErrors=true, NotifyOnValidationError=true}" Canvas.Top="83" Width="57"/>
         <Label Name="lblLength" Canvas.Left="516" Canvas.Top="81" Content="Lengte" />
-        <TextBox Name="txtLength" Height="23" Canvas.Left="581" TextWrapping="Wrap" Text="{Binding Path= Height}" Canvas.Top="86" Width="57"/>
-        <Button Name="btnCancelAddUser" Height="27" Canvas.Left="581" Canvas.Top="168" Width="92" Click="btnCancelAddUser_Click">Annuleer</Button>
-        <Button Name="btnSaveUser" Canvas.Left="462" Canvas.Top="168" Width="74" Click="btnSaveUser_Click" Height="26">Bewaar</Button>
+        <TextBox Name="txtLength" Height="23" Canvas.Left="581" TextWrapping="Wrap" Validation.Error="Validation_Error"
+                 Text="{Binding UpdateSourceTrigger=LostFocus, Path=Height,
+                        ValidatesOnDataErrors=true, NotifyOnValidationError=true}" Canvas.Top="86" Width="57"/>
         <Label Name="lblKg" Canvas.Left="476" Canvas.Top="81" Content="kg" />
         <Label Name="lblCm" Canvas.Left="674" Canvas.Top="83" Content="cm"  />
+        <Button Name="btnCancelAddUser" Height="27" Canvas.Left="581" Canvas.Top="168" Width="92" Click="btnCancelAddUser_Click">Annuleer</Button>
+        <Button Name="btnSaveUser" Canvas.Left="462" Canvas.Top="168" Width="74" Command="New" Height="26">Bewaar</Button>
 
 
     </Canvas>

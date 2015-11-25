@@ -23,6 +23,8 @@ namespace UI.WPFControls
     {
         private User user;
         private UserTask userTask;
+        private int _noOfErrorsOnScreen = 0;
+
         public AddUserWindow(Window window)
         {
             InitializeComponent();
@@ -31,14 +33,31 @@ namespace UI.WPFControls
             this.userTask.User = this.user;
             canvasUser.DataContext = this.userTask.User;
             dtpUser.DisplayDate = DateTime.Today;
+            dtpUser.DisplayDateStart = new DateTime(1925, 1, 1);
+            dtpUser.DisplayDateEnd = DateTime.Today;
 
 
         }
 
-        private void btnSaveUser_Click(object sender, RoutedEventArgs e)
+        private void Validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                _noOfErrorsOnScreen++;
+            else
+                _noOfErrorsOnScreen--;
+        }
+
+        private void AddUser_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = _noOfErrorsOnScreen == 0;
+            e.Handled = true;
+        }
+
+        private void AddUser_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             
             this.userTask.save(this.user);
+            e.Handled = true;
             Window currentForm = this;
             currentForm.Close();
         }

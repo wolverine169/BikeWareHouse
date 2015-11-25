@@ -9,12 +9,11 @@ using System.Threading.Tasks;
 namespace BikeWarehouse.Domain
 {
 
-    public class User : AbstractPersistentObject
+    public class User : AbstractPersistentObject, IDataErrorInfo
     {
 
         private String firstName;
         private String name;
-       // public String dateOfBirth;
         public DateTime dateOfBirth;
         public Decimal weight;
         public Decimal height;
@@ -68,12 +67,10 @@ namespace BikeWarehouse.Domain
             set { value = CalculateAge(BirthDate); }
         }
 
-        //private Int32 CalculateAge(String birthDate)
-            private Int32 CalculateAge(DateTime birthDate)
+       
+        private Int32 CalculateAge(DateTime birthDate)
         {
             DateTime now = DateTime.Today;
-            //DateTime birthday = Convert.ToDateTime(birthDate);
-
             DateTime birthday = birthDate;
             Int32 age = now.Year - birthday.Year;
             if (now.Month < birthday.Month || (now.Month == birthday.Month && now.Day < birthday.Day))//not had bday this year yet
@@ -109,5 +106,56 @@ namespace BikeWarehouse.Domain
             }
         }
 
+        public string Error
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string result = null;
+
+                if (columnName == "FirstName")
+                {
+                    if (string.IsNullOrEmpty(FirstName))
+                        result = "Voornaam kan niet leeg zijn";
+                }
+
+                if (columnName == "Name")
+                {
+                    if (string.IsNullOrEmpty(Name))
+                        result = "Naam kan niet leeg zijn";
+                }
+
+                if (columnName == "BirthDate")
+                {
+                    DateTime date = new DateTime(1925,1,1);
+                    if (BirthDate < date || BirthDate > DateTime.Today )
+                   result = "Gelieve een echte datum in te vullen";
+                }
+
+                if (columnName == "Weight")
+                {
+                    String gewicht = Weight.ToString();
+                    decimal w1 = new Decimal();
+                    if (Decimal.TryParse(gewicht, out w1) == false || Weight < 10)
+                        result = "Gelieve een gewicht in te vullen in formaat *.*";
+                }
+
+                if (columnName == "Height")
+                {
+                    String hoogte = Height.ToString();
+                    decimal h1 = new Decimal();
+                    if (Decimal.TryParse(hoogte, out h1) == false || Height < 90)
+                        result = "Gelieve een lengte in te vullen in formaat *.*";
+                    }
+                return result;
+            }
+        }
     }
 }
